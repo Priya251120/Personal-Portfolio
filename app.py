@@ -1,23 +1,29 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
+import os
 
 app = Flask(__name__)
 CORS(app)
 
 
-# ================= DATABASE CONNECTION =================
+# ===============================
+# DATABASE CONNECTION
+# ===============================
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="kann@2511",
-        database="portfolio_db"
+        host=os.getenv("MYSQLHOST", "localhost"),
+        port=int(os.getenv("MYSQLPORT", "3306")),
+        user=os.getenv("MYSQLUSER", "root"),
+        password=os.getenv("MYSQLPASSWORD", ""),
+        database=os.getenv("MYSQLDATABASE", "portfolio_db")
     )
 
 
-# ================= HOME API =================
+# ===============================
+# HOME
+# ===============================
 
 @app.route("/")
 def home():
@@ -26,7 +32,9 @@ def home():
     })
 
 
-# ================= PROFILE API =================
+# ===============================
+# PROFILE
+# ===============================
 
 @app.route("/api/profile", methods=["GET"])
 def get_profile():
@@ -48,7 +56,9 @@ def get_profile():
     return jsonify(profile)
 
 
-# ================= PROJECTS API =================
+# ===============================
+# PROJECTS
+# ===============================
 
 @app.route("/api/projects", methods=["GET"])
 def get_projects():
@@ -70,7 +80,9 @@ def get_projects():
     return jsonify(projects)
 
 
-# ================= CONTACT API =================
+# ===============================
+# CONTACT FORM
+# ===============================
 
 @app.route("/api/contact", methods=["POST"])
 def contact():
@@ -108,7 +120,13 @@ def contact():
     })
 
 
-# ================= RUN SERVER =================
+# ===============================
+# RUN SERVER
+# ===============================
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", 5000)),
+        debug=False
+    )
