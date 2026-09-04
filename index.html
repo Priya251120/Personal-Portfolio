@@ -5,72 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Priyadharsini R | AI & Cloud Enthusiast</title>
+    <title>Priyadharsini | AI & Cloud Engineer</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVIGATION ================= -->
 
-    <nav class="navbar">
+    <header class="navbar">
 
         <div class="container nav-container">
 
-            <div class="logo">
+            <a href="#home" class="logo">
                 Priyadharsini R
-            </div>
+            </a>
 
-            <ul class="nav-links">
-
-                <li>
-                    <a href="#home">Home</a>
-                </li>
-
-                <li>
-                    <a href="#about">About</a>
-                </li>
-
-                <li>
-                    <a href="#skills">Skills</a>
-                </li>
-
-                <li>
-                    <a href="#projects">Projects</a>
-                </li>
-
-                <li>
-                    <a href="#education">Education</a>
-                </li>
-
-                <li>
-                    <a href="#certifications">Certifications</a>
-                </li>
-
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
-
-            </ul>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </nav>
 
         </div>
 
-    </nav>
+    </header>
 
 
-    <!-- ================= HERO ================= -->
+    <!-- ================= HOME ================= -->
 
     <section id="home" class="hero">
 
+        <div class="hero-overlay"></div>
+
         <div class="container hero-content">
 
-            <p class="hero-small-text">
-                HELLO, I'M
+            <p class="hero-small">
+                WELCOME TO MY PORTFOLIO
             </p>
 
             <h1>
-                Priyadharsini R
+                Hi, I'm <span>Priyadharsini</span>
             </h1>
 
             <h2>
@@ -78,16 +64,17 @@
             </h2>
 
             <p class="hero-description">
-                Passionate about AI, Machine Learning and Cloud Computing.
+                I build intelligent solutions using Artificial Intelligence,
+                Machine Learning, Python and Cloud technologies.
             </p>
 
             <div class="hero-buttons">
 
-                <a href="#projects" class="btn">
-                    View My Work
+                <a href="#projects" class="btn primary-btn">
+                    View My Projects
                 </a>
 
-                <a href="#contact" class="btn btn-outline">
+                <a href="#contact" class="btn secondary-btn">
                     Contact Me
                 </a>
 
@@ -106,44 +93,92 @@
 
             <div class="section-heading">
 
-                <p>
-                    ABOUT ME
-                </p>
+                <p>GET TO KNOW ME</p>
 
-                <h2>
-                    Who I Am
-                </h2>
+                <h2>About Me</h2>
 
             </div>
 
 
             <div class="about-content">
 
-                <div class="about-image">
+                <div class="about-text">
 
-                    <div class="profile-placeholder">
-                        PR
-                    </div>
+                    <h3>
+                        Passionate about Technology & Innovation
+                    </h3>
+
+                    <p>
+                        I am a Computer Science Engineering student passionate
+                        about Artificial Intelligence, Machine Learning,
+                        Software Development and Cloud Computing.
+                    </p>
+
+                    <p>
+                        I enjoy solving real-world problems through technology
+                        and continuously improving my programming and
+                        problem-solving skills.
+                    </p>
+
+                    <p>
+                        My goal is to build practical, scalable and intelligent
+                        applications that create meaningful impact.
+                    </p>
 
                 </div>
 
 
-                <div class="about-text">
+                <div class="about-card">
 
-                    <h3 id="about-name">
-                        Priyadharsini R
-                    </h3>
+                    <div class="info-item">
 
-                    <h4 id="about-role">
-                        AI & Cloud Enthusiast
-                    </h4>
+                        <span>🎓</span>
 
-                    <p id="about-description">
-                        Passionate about Artificial Intelligence, Machine Learning,
-                        Software Development and Cloud Computing. I enjoy solving
-                        real-world problems through technology and continuously
-                        improving my programming and problem-solving skills.
-                    </p>
+                        <div>
+
+                            <strong>Education</strong>
+
+                            <p>
+                                B.E. Computer Science Engineering
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>💻</span>
+
+                        <div>
+
+                            <strong>Focus</strong>
+
+                            <p>
+                                AI, ML & Cloud Computing
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>🚀</span>
+
+                        <div>
+
+                            <strong>Goal</strong>
+
+                            <p>
+                                AI & Cloud Engineering
+                            </p>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -156,19 +191,15 @@
 
     <!-- ================= SKILLS ================= -->
 
-    <section id="skills" class="section light-section">
+    <section id="skills" class="section section-dark">
 
         <div class="container">
 
             <div class="section-heading">
 
-                <p>
-                    WHAT I KNOW
-                </p>
+                <p>MY EXPERTISE</p>
 
-                <h2>
-                    Skills
-                </h2>
+                <h2>Skills</h2>
 
             </div>
 
@@ -177,12 +208,12 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        Programming
-                    </h3>
+                    <div class="skill-icon">🐍</div>
+
+                    <h3>Python</h3>
 
                     <p>
-                        Python
+                        Programming & AI Development
                     </p>
 
                 </div>
@@ -190,12 +221,12 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        Artificial Intelligence
-                    </h3>
+                    <div class="skill-icon">☕</div>
+
+                    <h3>Java</h3>
 
                     <p>
-                        Artificial Intelligence
+                        Object-Oriented Programming
                     </p>
 
                 </div>
@@ -203,12 +234,12 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        Machine Learning
-                    </h3>
+                    <div class="skill-icon">🌐</div>
+
+                    <h3>Web Development</h3>
 
                     <p>
-                        Machine Learning
+                        HTML, CSS & JavaScript
                     </p>
 
                 </div>
@@ -216,12 +247,12 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        Cloud Computing
-                    </h3>
+                    <div class="skill-icon">🤖</div>
+
+                    <h3>Artificial Intelligence</h3>
 
                     <p>
-                        Cloud Computing
+                        Intelligent Applications
                     </p>
 
                 </div>
@@ -229,12 +260,12 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        DevOps
-                    </h3>
+                    <div class="skill-icon">🧠</div>
+
+                    <h3>Machine Learning</h3>
 
                     <p>
-                        DevOps
+                        Data-driven Solutions
                     </p>
 
                 </div>
@@ -242,12 +273,38 @@
 
                 <div class="skill-card">
 
-                    <h3>
-                        Software Development
-                    </h3>
+                    <div class="skill-icon">☁️</div>
+
+                    <h3>Cloud Computing</h3>
 
                     <p>
-                        Software Development
+                        Cloud Technologies
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">🗄️</div>
+
+                    <h3>SQL</h3>
+
+                    <p>
+                        Database Management
+                    </p>
+
+                </div>
+
+
+                <div class="skill-card">
+
+                    <div class="skill-icon">⚙️</div>
+
+                    <h3>DevOps</h3>
+
+                    <p>
+                        Development & Deployment
                     </p>
 
                 </div>
@@ -267,22 +324,18 @@
 
             <div class="section-heading">
 
-                <p>
-                    MY WORK
-                </p>
+                <p>MY WORK</p>
 
-                <h2>
-                    Projects
-                </h2>
+                <h2>Projects</h2>
 
             </div>
 
 
+            <!-- Projects will be loaded from MySQL through Flask -->
+
             <div class="projects-grid" id="projects-container">
 
-                <p>
-                    Loading projects...
-                </p>
+                <p>Loading projects...</p>
 
             </div>
 
@@ -293,37 +346,48 @@
 
     <!-- ================= EDUCATION ================= -->
 
-    <section id="education" class="section light-section">
+    <section id="education" class="section section-dark">
 
         <div class="container">
 
             <div class="section-heading">
 
-                <p>
-                    MY JOURNEY
-                </p>
+                <p>MY ACADEMIC JOURNEY</p>
 
-                <h2>
-                    Education
-                </h2>
+                <h2>Education</h2>
 
             </div>
 
 
-            <div class="education-card">
+            <div class="timeline">
 
-                <h3>
-                    Bachelor of Engineering
-                </h3>
+                <div class="timeline-item">
 
-                <h4>
-                    Computer Science and Engineering
-                </h4>
+                    <div class="timeline-dot"></div>
 
-                <p>
-                    Currently pursuing my Bachelor's degree in
-                    Computer Science and Engineering.
-                </p>
+                    <div class="timeline-content">
+
+                        <span class="timeline-year">
+                            Present
+                        </span>
+
+                        <h3>
+                            Bachelor of Engineering
+                        </h3>
+
+                        <h4>
+                            Computer Science & Engineering
+                        </h4>
+
+                        <p>
+                            Currently pursuing my engineering degree with
+                            a strong interest in Artificial Intelligence,
+                            Machine Learning and Cloud Computing.
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -340,54 +404,77 @@
 
             <div class="section-heading">
 
-                <p>
-                    ACHIEVEMENTS
-                </p>
+                <p>LEARNING & DEVELOPMENT</p>
 
-                <h2>
-                    Certifications
-                </h2>
+                <h2>Certifications</h2>
 
             </div>
 
 
             <div class="certifications-grid">
 
-                <div class="certification-card">
+                <div class="certificate-card">
+
+                    <div class="certificate-icon">
+                        🏆
+                    </div>
 
                     <h3>
-                        Artificial Intelligence
+                        AI & Machine Learning
                     </h3>
 
                     <p>
-                        AI certification and learning experience.
+                        Artificial Intelligence and Machine Learning
+                        certification.
                     </p>
+
+                    <a href="#" class="certificate-link">
+                        View Certificate →
+                    </a>
 
                 </div>
 
 
-                <div class="certification-card">
+                <div class="certificate-card">
 
-                    <h3>
-                        Machine Learning
-                    </h3>
-
-                    <p>
-                        Machine Learning certification and learning experience.
-                    </p>
-
-                </div>
-
-
-                <div class="certification-card">
+                    <div class="certificate-icon">
+                        ☁️
+                    </div>
 
                     <h3>
                         Cloud Computing
                     </h3>
 
                     <p>
-                        Cloud Computing certification and learning experience.
+                        Cloud computing and modern cloud technologies
+                        certification.
                     </p>
+
+                    <a href="#" class="certificate-link">
+                        View Certificate →
+                    </a>
+
+                </div>
+
+
+                <div class="certificate-card">
+
+                    <div class="certificate-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Programming
+                    </h3>
+
+                    <p>
+                        Programming and software development
+                        certification.
+                    </p>
+
+                    <a href="#" class="certificate-link">
+                        View Certificate →
+                    </a>
 
                 </div>
 
@@ -400,47 +487,84 @@
 
     <!-- ================= CONTACT ================= -->
 
-    <section id="contact" class="section light-section">
+    <section id="contact" class="section contact-section">
 
         <div class="container">
 
             <div class="section-heading">
 
-                <p>
-                    GET IN TOUCH
-                </p>
+                <p>LET'S CONNECT</p>
 
-                <h2>
-                    Contact Me
-                </h2>
+                <h2>Contact Me</h2>
 
             </div>
 
 
-            <div class="contact-content">
-
+            <div class="contact-container">
 
                 <div class="contact-info">
 
                     <h3>
-                        Let's Connect
+                        Have a project or opportunity?
                     </h3>
 
                     <p>
-                        Feel free to contact me for collaboration,
-                        opportunities or any technology-related discussion.
+                        I'm always interested in learning, collaborating
+                        and working on meaningful technology projects.
                     </p>
 
 
-                    <div class="contact-detail">
+                    <div class="contact-details">
 
-                        <strong>
-                            Email
-                        </strong>
+                        <div class="contact-item">
 
-                        <p id="email">
-                            priyadharsinir@example.com
-                        </p>
+                            <span>📧</span>
+
+                            <div>
+
+                                <strong>Email</strong>
+
+                                <p id="email">
+                                    your.email@example.com
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>💼</span>
+
+                            <div>
+
+                                <strong>LinkedIn</strong>
+
+                                <p>
+                                    linkedin.com
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <span>💻</span>
+
+                            <div>
+
+                                <strong>GitHub</strong>
+
+                                <p>
+                                    github.com
+                                </p>
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -455,30 +579,27 @@
                         required
                     >
 
-
                     <input
                         type="email"
                         placeholder="Your Email"
                         required
                     >
 
-
                     <input
                         type="text"
                         placeholder="Subject"
+                        required
                     >
 
-
                     <textarea
-                        placeholder="Your Message"
                         rows="6"
+                        placeholder="Your Message"
                         required
                     ></textarea>
 
-
                     <button
                         type="submit"
-                        class="btn"
+                        class="btn primary-btn"
                     >
                         Send Message
                     </button>
@@ -494,13 +615,42 @@
 
     <!-- ================= FOOTER ================= -->
 
-    <footer class="footer">
+    <footer>
 
-        <div class="container">
+        <div class="container footer-content">
 
-            <p>
-                © 2026 Priyadharsini R. All Rights Reserved.
-            </p>
+            <div>
+
+                <h3>
+                    Priyadharsini<span>.</span>
+                </h3>
+
+                <p>
+                    Building technology. Solving problems.
+                    Creating impact.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#about">About</a>
+
+                <a href="#projects">Projects</a>
+
+                <a href="#contact">Contact</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 Priyadharsini. All Rights Reserved.
 
         </div>
 
