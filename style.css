@@ -727,60 +727,67 @@ footer {
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 900px) {
-
-    nav {
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        margin: 30px auto 0;
-    }
-
-    .certifications-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-
 @media (max-width: 650px) {
 
     .nav-container {
         flex-direction: column;
-        padding: 15px 0;
-        gap: 10px;
+        padding: 12px 0;
+        gap: 8px;
+    }
+
+    .logo {
+        font-size: 22px;
+        text-align: center;
     }
 
     nav {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 8px;
     }
 
     nav a {
         font-size: 11px;
     }
 
+    .hero {
+        min-height: auto;
+        padding-top: 140px;
+        padding-bottom: 100px;
+    }
+
+    .hero-content {
+        padding-top: 20px;
+    }
+
+    .hero-small {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
     .hero h1 {
-        font-size: 43px;
+        font-size: 38px;
+        line-height: 1.2;
+    }
+
+    .hero h2 {
+        font-size: 20px;
     }
 
     .hero-description {
         font-size: 15px;
+        line-height: 1.7;
+        padding: 0 10px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-buttons .btn {
+        width: 220px;
+        text-align: center;
     }
 
     .section {
@@ -789,6 +796,10 @@ footer {
 
     .section-heading h2 {
         font-size: 34px;
+    }
+
+    .about-text h3 {
+        font-size: 24px;
     }
 
     .skills-grid {
@@ -804,8 +815,12 @@ footer {
     }
 
     .project-buttons a {
-        text-align: center;
         width: 100%;
+        text-align: center;
+    }
+
+    .contact-form {
+        padding: 20px;
     }
 
     .footer-content {

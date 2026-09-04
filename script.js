@@ -1,11 +1,14 @@
 const API_URL = "https://personal-portfolio-mco3.onrender.com";
 
-// ===============================
+
+// =====================================================
 // LOAD PROFILE FROM DATABASE
-// ===============================
+// =====================================================
 
 async function loadProfile() {
+
     try {
+
         const response = await fetch(`${API_URL}/api/profile`);
 
         if (!response.ok) {
@@ -16,231 +19,449 @@ async function loadProfile() {
 
         console.log("Profile loaded from MySQL:", profile);
 
-        // Update About section name
-        const aboutName = document.querySelector("#about h3");
 
-        if (aboutName && profile.name) {
-            aboutName.textContent = profile.name;
+        // ---------------------------------------------
+        // ABOUT NAME
+        // ---------------------------------------------
+
+        const aboutName =
+            document.getElementById("about-name");
+
+        if (aboutName) {
+            aboutName.textContent =
+                profile.name || "Priyadharsini R";
         }
 
-        // Update About section role
-        const aboutRole = document.querySelector("#about h4");
 
-        if (aboutRole && profile.role) {
-            aboutRole.textContent = profile.role;
+        // ---------------------------------------------
+        // ABOUT ROLE
+        // ---------------------------------------------
+
+        const aboutRole =
+            document.getElementById("about-role");
+
+        if (aboutRole) {
+            aboutRole.textContent =
+                profile.role || "AI & Cloud Enthusiast";
         }
 
-        // Update About section description
-        const aboutDescription = document.querySelector("#about p");
-
-        if (aboutDescription && profile.description) {
-            aboutDescription.textContent = profile.description;
-        }
-
-    } catch (error) {
-        console.error("Error loading profile:", error);
     }
+
+    catch (error) {
+
+        console.error(
+            "Error loading profile:",
+            error
+        );
+
+    }
+
 }
 
 
-// ===============================
+
+// =====================================================
 // LOAD PROJECTS FROM DATABASE
-// ===============================
+// =====================================================
 
 async function loadProjects() {
 
-    const container = document.getElementById("projects-container");
+    const container =
+        document.getElementById("projects-container");
+
 
     if (!container) {
-        console.error("Projects container not found.");
+
+        console.error(
+            "Projects container not found."
+        );
+
         return;
     }
+
 
     try {
 
         // Show loading message
-        container.innerHTML = "<p>Loading projects...</p>";
 
-        const response = await fetch(`${API_URL}/api/projects`);
+        container.innerHTML =
+            "<p>Loading projects...</p>";
+
+
+        // Get projects from backend
+
+        const response =
+            await fetch(`${API_URL}/api/projects`);
+
 
         if (!response.ok) {
-            throw new Error("Failed to load projects");
+
+            throw new Error(
+                "Failed to load projects"
+            );
+
         }
 
-        const projects = await response.json();
 
-        console.log("Projects loaded from MySQL:", projects);
+        // Convert response to JSON
 
-        // Check if projects exist
-        if (!Array.isArray(projects) || projects.length === 0) {
-            container.innerHTML = "<p>No projects available.</p>";
+        const projects =
+            await response.json();
+
+
+        console.log(
+            "Projects loaded from MySQL:",
+            projects
+        );
+
+
+        // Check whether projects exist
+
+        if (
+            !Array.isArray(projects) ||
+            projects.length === 0
+        ) {
+
+            container.innerHTML =
+                "<p>No projects available.</p>";
+
             return;
         }
 
+
         // Clear loading message
+
         container.innerHTML = "";
+
+
+        // Create project cards
 
         projects.forEach(project => {
 
-            const card = document.createElement("div");
+            const card =
+                document.createElement("div");
 
-            card.className = "project-card";
 
-            // Safely get project information
-            const title = project.title || "Untitled Project";
+            card.className =
+                "project-card";
+
+
+            // -----------------------------------------
+            // PROJECT TITLE
+            // -----------------------------------------
+
+            const title =
+                project.title ||
+                "Untitled Project";
+
+
+            // -----------------------------------------
+            // PROJECT DESCRIPTION
+            // -----------------------------------------
 
             const description =
-                project.description || "No description available.";
+                project.description ||
+                project.discription ||
+                "No description available.";
+
+
+            // -----------------------------------------
+            // TECHNOLOGIES
+            // -----------------------------------------
 
             const technologies =
-                project.technologies || "Not specified";
+                project.technologies ||
+                project.tech ||
+                "Not specified";
+
+
+            // -----------------------------------------
+            // GITHUB URL
+            // -----------------------------------------
 
             const githubUrl =
-                project.github_url || "";
+                project.github_url ||
+                "";
+
+
+            // -----------------------------------------
+            // LIVE DEMO URL
+            // -----------------------------------------
 
             const liveUrl =
-                project.live_url || "";
+                project.live_url ||
+                "";
 
-            // Create project card
+
+            // -----------------------------------------
+            // CREATE PROJECT CARD
+            // -----------------------------------------
+
             card.innerHTML = `
-                <h3>${title}</h3>
 
-                <p>${description}</p>
+                <h3>
+                    ${title}
+                </h3>
+
+                <p>
+                    ${description}
+                </p>
 
                 <p class="technologies">
-                    <strong>Technologies:</strong>
+
+                    <strong>
+                        Technologies:
+                    </strong>
+
                     ${technologies}
+
                 </p>
 
                 <div class="project-buttons">
 
                     ${
-                        githubUrl && githubUrl !== "#"
-                        ? `
-                            <a href="${githubUrl}" target="_blank" rel="noopener noreferrer">
-                                GitHub
-                            </a>
-                          `
-                        : ""
+                        githubUrl &&
+                        githubUrl !== "#"
+                        ?
+                        `
+                        <a
+                            href="${githubUrl}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            GitHub
+                        </a>
+                        `
+                        :
+                        ""
                     }
 
+
                     ${
-                        liveUrl && liveUrl !== "#"
-                        ? `
-                            <a href="${liveUrl}" target="_blank" rel="noopener noreferrer">
-                                Live Demo
-                            </a>
-                          `
-                        : ""
+                        liveUrl &&
+                        liveUrl !== "#"
+                        ?
+                        `
+                        <a
+                            href="${liveUrl}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Live Demo
+                        </a>
+                        `
+                        :
+                        ""
                     }
 
                 </div>
+
             `;
 
+
+            // Add card to page
+
             container.appendChild(card);
+
         });
 
-    } catch (error) {
+    }
 
-        console.error("Error loading projects:", error);
+
+    catch (error) {
+
+        console.error(
+            "Error loading projects:",
+            error
+        );
+
 
         container.innerHTML = `
-            <p>Unable to load projects. Please try again later.</p>
+
+            <p>
+                Unable to load projects.
+                Please try again later.
+            </p>
+
         `;
+
     }
+
 }
 
 
-// ===============================
-// CONTACT FORM
-// ===============================
 
-const contactForm = document.querySelector(".contact-form");
+// =====================================================
+// CONTACT FORM
+// =====================================================
+
+const contactForm =
+    document.querySelector(".contact-form");
+
 
 if (contactForm) {
 
-    contactForm.addEventListener("submit", async function(event) {
+    contactForm.addEventListener(
+        "submit",
+        async function(event) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        const inputs = contactForm.querySelectorAll("input");
-        const messageBox = contactForm.querySelector("textarea");
 
-        const data = {
-            name: inputs[0].value,
-            email: inputs[1].value,
-            subject: inputs[2].value,
-            message: messageBox.value
-        };
+            // Get form inputs
 
-        try {
+            const inputs =
+                contactForm.querySelectorAll("input");
 
-            const response = await fetch(`${API_URL}/api/contact`, {
 
-                method: "POST",
+            const messageBox =
+                contactForm.querySelector("textarea");
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
 
-                body: JSON.stringify(data)
-            });
+            // Prepare form data
 
-            if (!response.ok) {
-                throw new Error("Failed to send message");
+            const data = {
+
+                name:
+                    inputs[0].value,
+
+                email:
+                    inputs[1].value,
+
+                subject:
+                    inputs[2].value,
+
+                message:
+                    messageBox.value
+
+            };
+
+
+            try {
+
+                // Send data to backend
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/contact`,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body:
+                                JSON.stringify(data)
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Failed to send message"
+                    );
+
+                }
+
+
+                // Get server response
+
+                const result =
+                    await response.json();
+
+
+                if (result.success) {
+
+                    alert(
+                        result.message
+                    );
+
+
+                    // Clear form
+
+                    contactForm.reset();
+
+                }
+
+                else {
+
+                    alert(
+                        result.message
+                    );
+
+                }
+
             }
 
-            const result = await response.json();
 
-            if (result.success) {
+            catch (error) {
 
-                alert(result.message);
+                console.error(
+                    "Contact error:",
+                    error
+                );
 
-                contactForm.reset();
 
-            } else {
+                alert(
+                    "Unable to connect to the server."
+                );
 
-                alert(result.message);
             }
 
-        } catch (error) {
-
-            console.error("Contact error:", error);
-
-            alert("Unable to connect to the server.");
         }
-    });
+    );
+
 }
 
 
-// ===============================
-// NAVBAR EFFECT
-// ===============================
 
-window.addEventListener("scroll", function() {
+// =====================================================
+// NAVBAR SCROLL EFFECT
+// =====================================================
 
-    const navbar = document.querySelector(".navbar");
+window.addEventListener(
+    "scroll",
+    function() {
 
-    if (!navbar) {
-        return;
+        const navbar =
+            document.querySelector(".navbar");
+
+
+        if (!navbar) {
+            return;
+        }
+
+
+        if (window.scrollY > 50) {
+
+            navbar.style.background =
+                "rgba(3, 12, 25, 0.97)";
+
+        }
+
+        else {
+
+            navbar.style.background =
+                "rgba(5, 15, 28, 0.92)";
+
+        }
+
     }
-
-    if (window.scrollY > 50) {
-
-        navbar.style.background =
-            "rgba(3, 12, 25, 0.97)";
-
-    } else {
-
-        navbar.style.background =
-            "rgba(5, 15, 28, 0.92)";
-    }
-});
+);
 
 
-// ===============================
+
+// =====================================================
 // START APPLICATION
-// ===============================
+// =====================================================
 
 loadProfile();
+
 loadProjects();
