@@ -7,6 +7,11 @@ const API_URL = "https://personal-portfolio-mco3.onrender.com";
 async function loadProfile() {
     try {
         const response = await fetch(`${API_URL}/api/profile`);
+
+        if (!response.ok) {
+            throw new Error("Failed to load profile");
+        }
+
         const profile = await response.json();
 
         console.log("Profile loaded from MySQL:", profile);
@@ -43,46 +48,89 @@ async function loadProfile() {
 // ===============================
 
 async function loadProjects() {
+
     const container = document.getElementById("projects-container");
 
+    if (!container) {
+        console.error("Projects container not found.");
+        return;
+    }
+
     try {
+
+        // Show loading message
+        container.innerHTML = "<p>Loading projects...</p>";
+
         const response = await fetch(`${API_URL}/api/projects`);
+
+        if (!response.ok) {
+            throw new Error("Failed to load projects");
+        }
+
         const projects = await response.json();
 
         console.log("Projects loaded from MySQL:", projects);
 
+        // Check if projects exist
+        if (!Array.isArray(projects) || projects.length === 0) {
+            container.innerHTML = "<p>No projects available.</p>";
+            return;
+        }
+
+        // Clear loading message
         container.innerHTML = "";
 
         projects.forEach(project => {
 
             const card = document.createElement("div");
+
             card.className = "project-card";
 
-            card.innerHTML = `
-                <h3>${project.title}</h3>
+            // Safely get project information
+            const title = project.title || "Untitled Project";
 
-                <p>${project.description}</p>
+            const description =
+                project.description || "No description available.";
+
+            const technologies =
+                project.technologies || "Not specified";
+
+            const githubUrl =
+                project.github_url || "";
+
+            const liveUrl =
+                project.live_url || "";
+
+            // Create project card
+            card.innerHTML = `
+                <h3>${title}</h3>
+
+                <p>${description}</p>
 
                 <p class="technologies">
                     <strong>Technologies:</strong>
-                    ${project.technologies}
+                    ${technologies}
                 </p>
 
                 <div class="project-buttons">
 
                     ${
-                        project.github_url
-                        ? `<a href="${project.github_url}" target="_blank">
-                            GitHub
-                           </a>`
+                        githubUrl && githubUrl !== "#"
+                        ? `
+                            <a href="${githubUrl}" target="_blank" rel="noopener noreferrer">
+                                GitHub
+                            </a>
+                          `
                         : ""
                     }
 
                     ${
-                        project.live_url
-                        ? `<a href="${project.live_url}" target="_blank">
-                            Live Demo
-                           </a>`
+                        liveUrl && liveUrl !== "#"
+                        ? `
+                            <a href="${liveUrl}" target="_blank" rel="noopener noreferrer">
+                                Live Demo
+                            </a>
+                          `
                         : ""
                     }
 
@@ -97,7 +145,7 @@ async function loadProjects() {
         console.error("Error loading projects:", error);
 
         container.innerHTML = `
-            <p>Unable to load projects.</p>
+            <p>Unable to load projects. Please try again later.</p>
         `;
     }
 }
@@ -138,6 +186,10 @@ if (contactForm) {
                 body: JSON.stringify(data)
             });
 
+            if (!response.ok) {
+                throw new Error("Failed to send message");
+            }
+
             const result = await response.json();
 
             if (result.success) {
@@ -169,13 +221,19 @@ window.addEventListener("scroll", function() {
 
     const navbar = document.querySelector(".navbar");
 
+    if (!navbar) {
+        return;
+    }
+
     if (window.scrollY > 50) {
 
-        navbar.style.background = "rgba(3, 12, 25, 0.97)";
+        navbar.style.background =
+            "rgba(3, 12, 25, 0.97)";
 
     } else {
 
-        navbar.style.background = "rgba(5, 15, 28, 0.92)";
+        navbar.style.background =
+            "rgba(5, 15, 28, 0.92)";
     }
 });
 
