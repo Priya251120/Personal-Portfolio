@@ -18,19 +18,8 @@ async function loadProfile() {
             aboutName.textContent = profile.name;
         }
 
-        // Update About section role
-        const aboutRole = document.querySelector("#about h4");
+        
 
-        if (aboutRole && profile.role) {
-            aboutRole.textContent = profile.role;
-        }
-
-        // Update About section description
-        const aboutDescription = document.querySelector("#about p");
-
-        if (aboutDescription && profile.description) {
-            aboutDescription.textContent = profile.description;
-        }
 
     } catch (error) {
         console.error("Error loading profile:", error);
